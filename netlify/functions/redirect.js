@@ -9,7 +9,7 @@ const DOMAIN_CONFIG = {
   "https://sms-api.klasmart.id": {
     getHeaders: (event) => ({
       "Content-Type": "application/json",
-      "Xtoken": `${event.headers["x-token"]}`
+      "Xtoken": `${event.headers["xtoken"]}`
     })
   }
   // add more domains here
