@@ -54,40 +54,23 @@ fragment ProfileFragment on UserConnectionNode {
   __typename
 
 }`
-
         })
-
             }
 
         )
-
         const body = await response.json();
-
         return {
-
             statusCode: response.status,
-
             headers: {
-
                 "Access-Control-Allow-Origin": "*",
-
                 "Access-Control-Allow-Headers": "*"
-
             },
-            body: JSON.stringify(body)
-
+            body: body
         }
-
     } catch (e) {
-
         return {
-
             statusCode: 500,
-
             body: e.toString()
-
         }
-
     }
-
 }
