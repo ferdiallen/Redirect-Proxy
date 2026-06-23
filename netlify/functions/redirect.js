@@ -6,11 +6,11 @@ exports.handler = async (event) => {
 
         const response = await fetch(
 
-            "https://your-api.com/protected-endpoint",
+            "https://bali.dpenyet.com/edcmid-central/ksi/user0",
 
             {
 
-                method: "GET",
+                method: "POST",
 
                 headers: {
 
