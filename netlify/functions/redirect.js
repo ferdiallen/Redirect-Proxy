@@ -66,28 +66,16 @@ if (event.httpMethod === "OPTIONS") {
         const setBody = event.body
         const domainRetrieve = DOMAIN_CONFIG[matchedDomain].getHeaders(event);
         console.log("Append Token",domainRetrieve)
-        const response =if(event.httpMethod==="GET") {
-             await fetch(
+        const response = await fetch(
             url,
+        
             {
                 method: event.httpMethod,
                 headers: domainRetrieve,
+                body: event.httpMethod !== "GET" ? setBody : undefined
             }
 
         )
-            }else{
-                await fetch(
-            url,
-            {
-                method: event.httpMethod,
-                headers: domainRetrieve,
-                body: event.httpMethod !== "GET" ? setBody : ""
-            }
-
-        )
-            }
-        
-        
         const body = await response.json();
         return {
             statusCode: response.status,
