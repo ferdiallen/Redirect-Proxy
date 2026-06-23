@@ -18,6 +18,11 @@ const DOMAIN_CONFIG = {
       "Content-Type": "application/json",
       "Xtoken": `${event.headers["xtoken"]}`
     })
+  },
+  "https://whitelable.klasmart.id": {
+    getHeaders: (event) => ({
+      "Content-Type": "application/json",
+    })
   }
   // add more domains here
 };
@@ -78,7 +83,7 @@ if (event.httpMethod === "OPTIONS") {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
             },
-            body: JSON.stringify(body)
+            body: event.httpMethod !== "GET" ? setBody : ""
         }
     } catch (e) {
         return {
