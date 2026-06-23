@@ -74,8 +74,17 @@ if (event.httpMethod === "OPTIONS") {
         }
     } catch (e) {
         return {
-            statusCode: 500,
-            body: JSON.stringify(e.toString())
+         statusCode: 500,
+
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type, x-cookie, xtoken"
+        },
+        body: JSON.stringify({
+            error: e.message,
+            stack: e.stack
+
+        })
         }
     }
   
