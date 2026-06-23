@@ -3,7 +3,7 @@ exports.handler = async (event) => {
     try {
 
         const cookie = event.headers['x-cookie'];
-
+        const setBody = event.body
         const response = await fetch(
             "https://bali.dpenyet.com/edcmid-central/ksi/user0",
             {
@@ -13,37 +13,7 @@ exports.handler = async (event) => {
                     Cookie: cookie,
 
                 },
-                body: JSON.stringify({
-          operationName: "profiles",
-          variables: {},
-          query: `query profiles {
-  myUser {
-    profiles {
-      ...ProfileFragment
-      __typename
-
-    }
-
-    __typename
-
-  }
-
-}
-
-fragment ProfileFragment on UserConnectionNode {
-
-  id
-
-  givenName
-
-  familyName
-
-  dateOfBirth
-
-  __typename
-
-}`
-        })
+                body: setBody
             }
 
         )
