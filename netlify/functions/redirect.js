@@ -82,10 +82,11 @@ if (event.httpMethod === "OPTIONS") {
             "Access-Control-Allow-Headers": "Content-Type, x-cookie, xtoken"
         },
         body: JSON.stringify({
-            error: e.message,
+            name: e.name,
+            message: e.message,
+            cause: e.cause?.message,
             stack: e.stack
-
-        })
+    })
         }
     }
   
