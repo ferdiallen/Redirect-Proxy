@@ -22,7 +22,8 @@ if (event.httpMethod === "OPTIONS") {
     };
 
   }
-    try {
+  if(event.method != "GET" || event.method !="HEAD"){
+try {
         
         const cookie = event.headers['x-cookie'];
         const setBody = event.body
@@ -54,4 +55,5 @@ if (event.httpMethod === "OPTIONS") {
             body: e.toString()
         }
     }
+  }
 }
