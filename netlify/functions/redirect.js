@@ -65,7 +65,7 @@ fragment ProfileFragment on UserConnectionNode {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
             },
-            body: body
+            body: JSON.stringify(body)
         }
     } catch (e) {
         return {
