@@ -26,7 +26,7 @@ if (event.httpMethod === "OPTIONS") {
 
         "Access-Control-Allow-Origin": "*",
 
-        "Access-Control-Allow-Headers": "Content-Type, x-cookie","xtoken",
+        "Access-Control-Allow-Headers": "Content-Type, x-cookie,xtoken",
 
         "Access-Control-Allow-Methods": "POST, OPTIONS"
 
