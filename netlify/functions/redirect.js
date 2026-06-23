@@ -16,7 +16,46 @@ exports.handler = async (event) => {
 
                     Cookie: cookie
 
-                }
+                },
+                body: JSON.stringify({
+
+          operationName: "profiles",
+
+          variables: {},
+
+          query: `query profiles {
+
+  myUser {
+
+    profiles {
+
+      ...ProfileFragment
+
+      __typename
+
+    }
+
+    __typename
+
+  }
+
+}
+
+fragment ProfileFragment on UserConnectionNode {
+
+  id
+
+  givenName
+
+  familyName
+
+  dateOfBirth
+
+  __typename
+
+}`
+
+        })
 
             }
 
