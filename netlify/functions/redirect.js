@@ -4,7 +4,7 @@ const DOMAIN_CONFIG = {
   "https://bali.dpenyet.com": {
     getHeaders: (event) => ({
       "Content-Type": "application/json",
-    //   "Cookie": event.headers["x-cookie"]
+      "Cookie": event.headers["x-cookie"]
     })
   },
   "https://api.klasmart.id": {
