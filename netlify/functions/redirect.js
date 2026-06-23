@@ -1,7 +1,22 @@
+
+const DOMAIN_CONFIG = {
+  "https://bali.dpenyet.com": {
+    getHeaders: (event) => ({
+      "Content-Type": "application/json",
+      "Cookie": event.headers["x-cookie"]
+    })
+  },
+  "https://sms-api.klasmart.id": {
+    getHeaders: (event) => ({
+      "Content-Type": "application/json",
+      "Xtoken": `${event.headers["x-token"]}`
+    })
+  }
+  // add more domains here
+};
+
 exports.handler = async (event) => {
  const url = event.queryStringParameters?.url;
- console.log("Woohooo ", event.httpMethod);
-
 if (event.httpMethod === "OPTIONS") {
     return {
 
@@ -22,19 +37,29 @@ if (event.httpMethod === "OPTIONS") {
     };
 
   }
-  if(event.method != "GET" || event.method !="HEAD"){
-try {
-        
+  if(!url){
+    return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "Missing url parameter" })
+    }
+  }
+  
+  const matchedDomain = Object.keys(DOMAIN_CONFIG).find(
+    dom => url.startsWith(dom)
+  )
+  if(!matchedDomain){
+       return { statusCode: 403, body: JSON.stringify({ error: "URL Invalid" }) };
+  }
+  if(event.httpMethod != "GET" || event.httpMethod !="HEAD"){
+try {  
         const cookie = event.headers['x-cookie'];
         const setBody = event.body
+        const domainRetrieve = DOMAIN_CONFIG[matchedDomain].getHeaders(event);
         const response = await fetch(
             url,
             {
                 method: event.httpMethod,
-                headers: {
-                    "Content-Type": "application/json",
-                    Cookie: cookie,
-                },
+                headers:domainRetrieve,
                 body: setBody
             }
 
