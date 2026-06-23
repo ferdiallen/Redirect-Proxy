@@ -65,10 +65,8 @@ if (event.httpMethod === "OPTIONS") {
     try {  
         const setBody = event.body
         const domainRetrieve = DOMAIN_CONFIG[matchedDomain].getHeaders(event);
-        console.log("Append Token",domainRetrieve)
         const response = await fetch(
             url,
-        
             {
                 method: event.httpMethod,
                 headers: domainRetrieve,
