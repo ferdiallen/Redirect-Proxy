@@ -7,6 +7,12 @@ const DOMAIN_CONFIG = {
       "Cookie": event.headers["x-cookie"]
     })
   },
+  "https://api.klasmart.id": {
+    getHeaders: (event) => ({
+      "Content-Type": "application/json",
+      "Cookie": event.headers["x-cookie"]
+    })
+  },
   "https://sms-api.klasmart.id": {
     getHeaders: (event) => ({
       "Content-Type": "application/json",
