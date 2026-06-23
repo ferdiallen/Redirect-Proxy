@@ -1,4 +1,5 @@
 exports.handler = async (event) => {
+ const url = event.queryStringParameters?.url;
 if (event.httpMethod === "OPTIONS") {
     return {
 
@@ -20,13 +21,13 @@ if (event.httpMethod === "OPTIONS") {
 
   }
     try {
-
+        
         const cookie = event.headers['x-cookie'];
         const setBody = event.body
         const response = await fetch(
-            "https://bali.dpenyet.com/edcmid-central/ksi/user0",
+            url,
             {
-                method: "POST",
+                method: event.method,
                 headers: {
                     "Content-Type": "application/json",
                     Cookie: cookie,
