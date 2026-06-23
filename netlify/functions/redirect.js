@@ -3,7 +3,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const DOMAIN_CONFIG = {
   "https://bali.dpenyet.com": {
     getHeaders: (event) => ({
-      "Content-Type": "application/json",
+      "Content-Type": event.headers["content-type"],
       "Cookie": event.headers["x-cookie"]
     })
   },
@@ -28,6 +28,11 @@ const DOMAIN_CONFIG = {
   "https://whitelable.klasmart.id": {
     getHeaders: (event) => ({
       "Content-Type": "application/json",
+    })
+  },
+   "https://api.klasmart.com": {
+    getHeaders: (event) => ({
+      "Content-Type": event.headers["content-type"],
     })
   }
   // add more domains here
