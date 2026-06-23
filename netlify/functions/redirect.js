@@ -17,6 +17,7 @@ const DOMAIN_CONFIG = {
 
 exports.handler = async (event) => {
  const url = event.queryStringParameters?.url;
+ console.log("Fetched :",url);
 if (event.httpMethod === "OPTIONS") {
     return {
       statusCode: 200,
