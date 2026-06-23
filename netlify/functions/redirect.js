@@ -19,6 +19,12 @@ const DOMAIN_CONFIG = {
       "Xtoken": `${event.headers["xtoken"]}`
     })
   },
+  "https://sms-api.klasmart.com": {
+    getHeaders: (event) => ({
+      "Content-Type": "application/json",
+      "Xtoken": `${event.headers["xtoken"]}`
+    })
+  },
   "https://whitelable.klasmart.id": {
     getHeaders: (event) => ({
       "Content-Type": "application/json",
