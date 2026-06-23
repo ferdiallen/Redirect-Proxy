@@ -62,6 +62,7 @@ fragment ProfileFragment on UserConnectionNode {
         return {
             statusCode: response.status,
             headers: {
+                  "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
             },
