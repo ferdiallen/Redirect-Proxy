@@ -49,10 +49,10 @@ if (event.httpMethod === "OPTIONS") {
        return { statusCode: 403, body: JSON.stringify({ error: "URL Invalid" }) };
   }
   if(event.httpMethod != "GET" || event.httpMethod !="HEAD"){
-try {  
+    try {  
         const setBody = event.body
-        console.log("Append Token",event.headers["xtoken"])
         const domainRetrieve = DOMAIN_CONFIG[matchedDomain].getHeaders(event);
+        console.log("Append Token",domainRetrieve)
         const response = await fetch(
             url,
             {
@@ -75,7 +75,7 @@ try {
     } catch (e) {
         return {
             statusCode: 500,
-            body: e.toString()
+            body: JSON.stringify(e.toString())
         }
     }
   }
