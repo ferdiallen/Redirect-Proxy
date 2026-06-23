@@ -71,7 +71,7 @@ if (event.httpMethod === "OPTIONS") {
             {
                 method: event.httpMethod,
                 headers: domainRetrieve,
-                body: setBody
+                body: event.httpMethod !== "GET" ? setBody : ""
             }
 
         )
@@ -83,7 +83,7 @@ if (event.httpMethod === "OPTIONS") {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
             },
-            body: setBody
+            body: JSON.stringify(body)
         }
     } catch (e) {
         return {
