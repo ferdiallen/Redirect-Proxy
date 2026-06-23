@@ -19,14 +19,12 @@ exports.handler = async (event) => {
  const url = event.queryStringParameters?.url;
 if (event.httpMethod === "OPTIONS") {
     return {
-
       statusCode: 200,
-
       headers: {
 
         "Access-Control-Allow-Origin": "*",
 
-        "Access-Control-Allow-Headers": "Content-Type, x-cookie,xtoken",
+        "Access-Control-Allow-Headers": "Content-Type, x-cookie, xtoken",
 
         "Access-Control-Allow-Methods": "POST, OPTIONS"
 
@@ -52,14 +50,14 @@ if (event.httpMethod === "OPTIONS") {
   }
   if(event.httpMethod != "GET" || event.httpMethod !="HEAD"){
 try {  
-        const cookie = event.headers['x-cookie'];
         const setBody = event.body
+        console.log("Append Token",event.headers["xtoken"])
         const domainRetrieve = DOMAIN_CONFIG[matchedDomain].getHeaders(event);
         const response = await fetch(
             url,
             {
                 method: event.httpMethod,
-                headers:domainRetrieve,
+                headers: domainRetrieve,
                 body: setBody
             }
 
