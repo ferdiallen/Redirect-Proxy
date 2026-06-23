@@ -1,6 +1,6 @@
 exports.handler = async (event) => {
  const url = event.queryStringParameters?.url;
- console.log("Woohooo ", event.body);
+ console.log("Woohooo ", event.httpMethod);
 
 if (event.httpMethod === "OPTIONS") {
     return {
@@ -30,7 +30,7 @@ try {
         const response = await fetch(
             url,
             {
-                method: event.method,
+                method: event.httpMethod,
                 headers: {
                     "Content-Type": "application/json",
                     Cookie: cookie,
