@@ -83,7 +83,7 @@ if (event.httpMethod === "OPTIONS") {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*"
             },
-            body: event.httpMethod !== "GET" ? setBody : ""
+            body: setBody
         }
     } catch (e) {
         return {
