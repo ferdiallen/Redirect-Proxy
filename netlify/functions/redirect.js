@@ -1,6 +1,6 @@
 exports.handler = async (event) => {
  const url = event.queryStringParameters?.url;
- console.log("Woohooo ",url);
+ console.log("Woohooo ", event.body);
 
 if (event.httpMethod === "OPTIONS") {
     return {
