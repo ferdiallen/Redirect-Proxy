@@ -48,7 +48,7 @@ if (event.httpMethod === "OPTIONS") {
   if(!matchedDomain){
        return { statusCode: 403, body: JSON.stringify({ error: "URL Invalid" }) };
   }
-  if(event.httpMethod != "GET" || event.httpMethod !="HEAD"){
+
     try {  
         const setBody = event.body
         const domainRetrieve = DOMAIN_CONFIG[matchedDomain].getHeaders(event);
@@ -78,5 +78,5 @@ if (event.httpMethod === "OPTIONS") {
             body: JSON.stringify(e.toString())
         }
     }
-  }
+  
 }
