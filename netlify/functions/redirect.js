@@ -74,8 +74,7 @@ fragment ProfileFragment on UserConnectionNode {
                 "Access-Control-Allow-Headers": "*"
 
             },
-
-            body
+            body: Json.stringify(body)
 
         }
 
