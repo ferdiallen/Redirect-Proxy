@@ -61,7 +61,7 @@ fragment ProfileFragment on UserConnectionNode {
 
         )
 
-        const body = await response.text()
+        const body = await response.json();
 
         return {
 
