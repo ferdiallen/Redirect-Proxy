@@ -1,5 +1,24 @@
 exports.handler = async (event) => {
+if (event.httpMethod === "OPTIONS") {
+    return {
 
+      statusCode: 200,
+
+      headers: {
+
+        "Access-Control-Allow-Origin": "*",
+
+        "Access-Control-Allow-Headers": "Content-Type, x-cookie",
+
+        "Access-Control-Allow-Methods": "POST, OPTIONS"
+
+      },
+
+      body: ""
+
+    };
+
+  }
     try {
 
         const cookie = event.headers['x-cookie'];
@@ -11,7 +30,6 @@ exports.handler = async (event) => {
                 headers: {
                     "Content-Type": "application/json",
                     Cookie: cookie,
-
                 },
                 body: setBody
             }
