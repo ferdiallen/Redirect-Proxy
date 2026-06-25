@@ -55,7 +55,7 @@ if (event.httpMethod === "OPTIONS") {
 
         "Access-Control-Allow-Headers": "Content-Type, x-cookie, xtoken",
 
-        "Access-Control-Allow-Methods": "POST, OPTIONS"
+        "Access-Control-Allow-Methods": "POST, OPTIONS,PUT"
 
       },
 
