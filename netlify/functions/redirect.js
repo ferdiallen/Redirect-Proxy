@@ -81,12 +81,15 @@ if (event.httpMethod === "OPTIONS") {
     try {  
         const setBody = event.body
         const domainRetrieve = DOMAIN_CONFIG[matchedDomain].getHeaders(event);
+        const body = event.isBase64Encoded
+    ? Buffer.from(event.body, "base64")
+    : event.body;
         const response = await fetch(
             url,
             {
                 method: event.httpMethod,
                 headers: domainRetrieve,
-                body: event.httpMethod !== "GET" ? setBody : undefined
+                body: event.httpMethod !== "GET" ? body : undefined
             }
 
         )
